@@ -1,0 +1,32 @@
+<p *ngIf="!isDeleted; else ngifelse">J'utilise le *ngIf !!! <input type="checkbox" [(ngModel)]="isDeleted"></p>
+<ng-template #ngifelse>
+    <p>Le *ngIf est passé à false...</p>
+</ng-template>
+
+<div>
+    <div>
+        <input type="radio" name="choixRepas" id="pizza" value="1" [(ngModel)]="mealChoice">
+        <label for="pizza">Pizza</label>
+    </div>
+    <div>
+        <input type="radio" name="choixRepas" id="spaghetti" value="2" [(ngModel)]="mealChoice">
+        <label for="spaghetti">Spaghetti</label>
+    </div>
+    <div>
+        <input type="radio" name="choixRepas" id="croquems" value="3" [(ngModel)]="mealChoice">
+        <label for="croquems">Croque-Monsieur</label>
+    </div>
+</div>
+<p>Vous avez choisi le plat numéro {{mealChoice}}</p>
+<p [ngSwitch]="mealChoice">
+    <ng-container *ngSwitchCase="1">Voici une pizza</ng-container>
+    <ng-container *ngSwitchCase="2">Voici une assiette de spaghetti</ng-container>
+    <ng-container *ngSwitchCase="3">Voici un Croque-Monsieur</ng-container>
+    <ng-container *ngSwitchDefault>Veuillez choisir un repas...</ng-container>
+</p>
+
+<select>
+    <option *ngFor="let student of students">{{student}}</option>
+</select>
+<input type="text" #newStudent><input type="button" value="+" (click)="students.push(newStudent.value)">
+

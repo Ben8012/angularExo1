@@ -1,0 +1,7 @@
+<p>shopping-main works!</p>
+
+<input type="text" [(ngModel)]="newArticle" placeholder="Ajoutez votre article...">
+<input type="button" value="+" (click)="onClick()">
+
+<p>{{list | json}}</p>
+<app-shopping-list [list]="list" (onClickList)="onClickList($event)"></app-shopping-list>

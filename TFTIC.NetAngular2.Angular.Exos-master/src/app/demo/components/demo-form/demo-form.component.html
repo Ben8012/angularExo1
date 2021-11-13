@@ -1,0 +1,26 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <app-demo-person-form [form]="registerForm"></app-demo-person-form>
+    <fieldset>
+        <legend>Father</legend>
+        <input *ngIf="!registerForm.controls['father']" type="button" (click)="addParent('father')">
+        <ng-container *ngIf="registerForm.controls['father']">
+            <app-demo-person-form prefix="father" [form]="fatherGroup"></app-demo-person-form>
+        </ng-container>
+    </fieldset>
+    <fieldset>
+        <legend>Mother</legend>
+        <input *ngIf="!registerForm.controls['mother']" type="button" (click)="addParent('mother')">
+        <ng-container *ngIf="registerForm.controls['mother']">
+            <app-demo-person-form prefix="mother" [form]="motherGroup"></app-demo-person-form>
+        </ng-container>
+    </fieldset>
+    <fieldset>
+        <legend>Siblings</legend>
+        <input type="button" value="+" (click)="addSibling()">
+        <fieldset *ngFor="let sib of siblingArray.controls; let i = index">
+            <app-demo-person-form [prefix]="'sib_'+i" [form]="asFormGroup(sib)"></app-demo-person-form>
+        </fieldset>
+    </fieldset>
+    <input type="submit" value="Save" [disabled]="!registerForm.valid">
+</form>
+

@@ -1,0 +1,10 @@
+<ol *ngIf="list && list.size > 0; else noList">
+    <li *ngFor="let article of list.keys()">
+        <div (click)="onClick(article)">
+            {{article}} X {{list.get(article)}}
+        </div>
+    </li>
+</ol>
+<ng-template #noList>
+    <h3>Oups, il semble que vous n'ayez rien ajouté...</h3>
+</ng-template>

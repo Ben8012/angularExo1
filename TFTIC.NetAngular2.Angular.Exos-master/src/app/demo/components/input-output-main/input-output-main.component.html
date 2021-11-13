@@ -1,0 +1,13 @@
+<div>
+    <div>
+        
+        <app-input-output-list (onClickedListItem)="onClickedListItem($event)" [list]="listToDo">
+            <h1>Liste de choses à faire</h1>
+        </app-input-output-list>
+    </div>
+    <div>
+        <app-input-output-list [list]="listDone">
+            <h1>Liste de choses faites</h1>
+        </app-input-output-list>
+    </div>
+</div>

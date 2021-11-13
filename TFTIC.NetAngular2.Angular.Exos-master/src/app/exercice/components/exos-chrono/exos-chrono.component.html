@@ -1,0 +1,5 @@
+<h3>{{chrono | chronoView}}</h3>
+
+<input type="button" value="START" (click)="startChrono()" [disabled]="interval">
+<input type="button" value="PAUSE" (click)="pauseChrono()" [disabled]="!interval">
+<input type="button" value="RESET" (click)="resetChrono()" [disabled]="!(chrono > 0)">

@@ -1,0 +1,30 @@
+<div [formGroup]="form">
+    <label [for]="prefix +'firstname'">
+        Firstname : 
+        <input [id]="prefix +'firstname'" type="text" formControlName="firstname">
+    </label>
+    <div *ngIf="!form.controls['firstname'].valid && form.controls['firstname'].touched">Veuillez introduire un Prénom</div>
+    <label [for]="prefix +'lastname'">
+        Lastname : 
+        <input [id]="prefix +'lastname'" type="text" formControlName="lastname">
+    </label>
+    <div *ngIf="!form.controls['lastname'].valid && form.controls['lastname'].touched">Veuillez introduire un Nom</div>
+    <label [for]="prefix +'birthdate'">
+        Birthdate : 
+        <input [id]="prefix +'birthdate'" type="date" formControlName="birthdate">
+    </label>
+    <h5>Gender : </h5>
+    <label [for]="prefix +'genderM'">
+        Male
+        <input  [id]="prefix +'genderM'" type="radio" value="Male" formControlName="gender">
+    </label>
+    <label [for]="prefix +'genderF'">
+        Female
+        <input  [id]="prefix +'genderF'" type="radio" value="Female" formControlName="gender">
+    </label>
+    <label [for]="prefix +'genderO'">
+        Other
+        <input  [id]="prefix +'genderO'" type="radio" value="Other" formControlName="gender">
+    </label>
+    <div  *ngIf="!form.controls['gender'].valid  && form.controls['gender'].touched">Veuillez selectionner un Genre</div>
+</div>

@@ -1,0 +1,12 @@
+<h1>Angular - TFTIC</h1>
+<div *ngIf="userName; else noUserName">
+    <h2>Bienvenu {{userName}}</h2>
+</div>
+<ng-template #noUserName>
+    <input type="text" #inputUserName>
+    <input type="button" value="S'enregister" (click)="saveUserName(inputUserName.value)">
+</ng-template>
+<div class="flex-container">
+    <app-navigation-menu></app-navigation-menu>
+    <router-outlet></router-outlet>
+</div>

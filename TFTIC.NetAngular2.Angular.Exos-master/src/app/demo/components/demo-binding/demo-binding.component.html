@@ -1,0 +1,17 @@
+<div>
+    <h2>Property binding</h2>
+    <p>{{message}}</p>
+
+<label for="firstname">Votre prénom :</label>
+<input type="text" name="firstname" [(ngModel)]="user_firstname">
+
+<p>Bienvenu {{user_firstname}}</p>
+
+<p><input type="number" [(ngModel)]="nb1"> + <input type="number" [(ngModel)]="nb2"> = {{getTotal()}}</p>
+</div>
+<div>
+    <h2>Event binding</h2>
+    <input type="button" (click)="alertUser()" value="Click for alert!" [disabled]="!isActivated">
+    <input type="button" value="Reset" (click)="switchActivated()" [hidden]="isActivated">
+    <div (mouseover)="changeMessage('Vous avez passé la souris')">Quand la souris passe sur le texte : {{message}}</div>
+</div>

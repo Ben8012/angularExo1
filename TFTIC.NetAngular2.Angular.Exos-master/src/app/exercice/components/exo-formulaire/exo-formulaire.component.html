@@ -1,0 +1,208 @@
+<form [formGroup]="adminRegister" (ngSubmit)="onSubmit()">
+    <h4>La partie administrative</h4>
+        <label for="firstname">
+            Prénom : 
+            <input id="firstname" type="text" formControlName="firstname">
+        </label>
+        <div *ngIf="!adminRegister.controls['firstname'].valid && adminRegister.controls['firstname'].touched">Veuillez introduire un Prénom</div>
+        <br>
+        <label for="lastname">
+            Nom : 
+            <input id="lastname" type="text" formControlName="lastname">
+        </label>
+        <div *ngIf="!adminRegister.controls['lastname'].valid && adminRegister.controls['lastname'].touched">Veuillez introduire un Nom</div>
+        <br> 
+        <label for="birthdate'">
+            Date de naissance : 
+            <input id="birthdate" type="date" formControlName="birthdate">
+        </label>
+        <br>
+        <label for="email'">
+            email : 
+            <input id="email" type="email" formControlName="email">
+        </label>
+        <br>
+      <label for="passwd'">
+            mot de passe : 
+            <input id="passwd" type="password" formControlName="passwd">
+        </label>
+        <br>
+        <label for="passwdConfirm'">
+            confirmation : 
+            <input id="passwdConfirm" type="password" formControlName="passwdConfirm">
+        </label>
+        <br>
+   
+    <fieldset>
+
+        <legend>La partie personnel </legend>
+        <br>
+        <h5>Votre Genre : </h5>
+       
+        <label for="genderM">
+            Homme
+            <input  id="genderM" type="radio" value="Male" formControlName="gender">
+        </label>
+        
+        <label for="genderF">
+            Femme
+            <input  id="genderF" type="radio" value="Female" formControlName="gender">
+        </label>
+        
+        <label for="genderO">
+            Autre
+            <input  id="genderO" type="radio" value="Other" formControlName="gender">
+        </label>
+        <div  *ngIf="!adminRegister.controls['gender'].valid  && adminRegister.controls['gender'].touched">Veuillez selectionner un Genre</div>
+        <br>
+        <h5> Genre recherché : </h5>
+   
+        <label for="searchingGenderrM">
+            Homme
+            <input  id="searchingGenderM" type="radio" value="Male" formControlName="searchingGender">
+        </label>
+        
+        <label for="searchingGenderF">
+            Femme
+            <input  id="searchingGenderF" type="radio" value="Female" formControlName="searchingGender">
+        </label>
+        <label for="searchingGenderO">
+            Autre
+            <input  id="searchingGenderO" type="radio" value="Other" formControlName="searchingGender">
+        </label>
+        <div  *ngIf="!adminRegister.controls['searchingGender'].valid  && adminRegister.controls['searchingGender'].touched">Veuillez selectionner un Genre</div>
+        <br>
+        <label for="hairColor">
+           couleur des cheveux : 
+            <input id="hairColor" type="text" formControlName="hairColor">
+        </label>
+
+        <br>
+
+         <label for="eyesColor">
+            couleur des yeux : 
+             <input id="eyesColor" type="text" formControlName="eyesColor">
+         </label>
+         <br>
+         <label for="height">
+           taille en cm : 
+             <input id="height" type="number" formControlName="height">
+         </label>
+         <br>
+         <label for="weight">
+            poid en kg : 
+              <input id="weight" type="number" formControlName="weight">
+          </label>
+            <br>
+          <br>
+        
+          Villes :
+          <select>
+            <option *ngFor="let cit of Citys; let i = index"> {{cit.name}}</option>
+          </select>
+          
+         
+            <br>
+           
+         
+
+ 
+          <label for="description">
+            description : 
+              <input id="description" type="text" formControlName="description">
+          </label>
+          <br>
+          <label for="nickName">
+            pseudonyme : 
+              <input id="nickName" type="text" formControlName="nickName">
+          </label>
+          <br>
+    </fieldset>
+  
+    <fieldset>
+        <legend>La partie centre d’intérêts</legend>
+        <br>
+        <fieldset>
+            <legend>Nourriture</legend>
+            <br>
+            
+            <input type="button" value="+" (click)="addFood()" >
+            <fieldset *ngFor="let f of foods.controls; let i = index">
+                <app-food [prefix]="'food'+i" [form]="asFormGroup(f)" ></app-food>
+
+            </fieldset>
+    
+        </fieldset>
+       
+
+        <fieldset>
+            <legend>Voyage</legend>
+            <br>
+            <input type="button" value="+" (click)="addTrip()">
+            <fieldset *ngFor="let t of trips.controls; let i = index" [formGroup]="asFormGroup(t)">
+                
+            <label [for]="'tripcountry'+i" >
+                pays : 
+                <select  [id]="'tripcountry'+i"  formControlName="country">
+                    <option *ngFor="let country of Countrys; let i = index" value="{{country.name}}"> {{country.name}}</option>
+                </select>
+               
+            </label>
+
+            <label [for]="'tripdate'+i" >
+                date : 
+                <input [id]="'tripdate'+i" type="date" formControlName="date">
+            </label>
+            </fieldset>
+        </fieldset>
+
+        <fieldset>
+            <legend>Sorties</legend>
+            <br>
+            <input type="button" value="+" (click)="addParty()">
+            <fieldset *ngFor="let p of partys.controls; let i = index" [formGroup]="asFormGroup(p)">
+                
+            <label [for]="'partyNom'+i" >
+                Nom : 
+                <input [id]="'partyNom'+i" type="text" formControlName="Nom">
+            </label>
+
+            <label [for]="'partyVille'+i"  >
+                villes : 
+                <select [id]="'partyVille'+i" formControlName="Ville">
+                    <option *ngFor="let cit of Citys; let i = index" value="{{cit.name}}"> {{cit.name}}</option>
+                </select>
+               
+            </label>
+
+            <label [for]="'partyDate'+i" >
+                date : 
+                <input [id]="'partyDate'+i" type="date" formControlName="Date">
+            </label>
+            </fieldset>
+        </fieldset>
+
+        <fieldset>
+            <legend>Films</legend>
+            <br>
+            <input type="button" value="+" (click)="addMovie()">
+            <fieldset *ngFor="let m of movies.controls; let i = index" [formGroup]="asFormGroup(m)">
+                
+            <label [for]="'movieTitre'+i" >
+                Titres : 
+                <input [id]="'movieTitre'+i" type="text" formControlName="Titre">
+            </label>
+
+           
+            </fieldset>
+        </fieldset>
+
+    </fieldset>
+
+
+
+
+    <input type="submit" value="Save" [disabled]="!adminRegister.valid ">
+
+
+</form>

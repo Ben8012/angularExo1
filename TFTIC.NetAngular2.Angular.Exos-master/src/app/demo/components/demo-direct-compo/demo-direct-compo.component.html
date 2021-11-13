@@ -1,0 +1,7 @@
+<p [ngStyle]="{fontWeight : 800, backgroundColor: 'blue', fontSize:size+'px'}">J'utilise le ngStyle !!!</p>
+
+<input type="range" min="12" max="32" [(ngModel)]="size">
+
+<p [ngClass]="{selected : isChecked, deleted : isDeleted}">J'utilise le ngClass !!! <input type="checkbox" [(ngModel)]="isDeleted"></p>
+
+<input type="checkbox" [(ngModel)]="isChecked">

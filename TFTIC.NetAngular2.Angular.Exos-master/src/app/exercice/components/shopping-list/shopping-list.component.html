@@ -1,0 +1,10 @@
+<ol *ngIf="list && list.length > 0; else noList">
+    <li *ngFor="let article of list; let index = index">
+        <div (click)="onClick(index)">
+            {{article}}
+        </div>
+    </li>
+</ol>
+<ng-template #noList>
+    <h3>Oups, il semble que vous n'ayez rien ajouté...</h3>
+</ng-template>

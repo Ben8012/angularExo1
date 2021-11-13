@@ -1,0 +1,4 @@
+<ng-content></ng-content>
+<ol>
+    <li *ngFor="let listItem of list; let index = index" (click)="onClick(index)">{{listItem}}</li>
+</ol>
